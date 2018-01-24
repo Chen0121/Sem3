@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">安卓实验室</string>
+    <string name="hello_message">你好世界！</string>
+    <string name="ButtonText">我是一个按钮</string>
+    <string name="message">登录</string>
+    <string name="passwd">请输入密码</string>
+    <string name="loginname">登录名</string>
+    <string name="RadioButton">单选按钮</string>
+    <string name="CheckBox">复选框</string>
+    <string name="Switch"> 这是做什么的 ? </string>
+</resources>
