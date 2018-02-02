@@ -34,7 +34,9 @@
         android:gravity="fill"
         android:text="@string/Switch" />
 
-    <ImageButton android:src="@android:drawable/ic_menu_camera"
+    <ImageButton
+        android:id="@+id/ib"
+        android:src="@android:drawable/ic_menu_camera"
         android:layout_columnWeight="1"
         android:gravity="fill" />
 
