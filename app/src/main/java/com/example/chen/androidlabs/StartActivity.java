@@ -30,13 +30,15 @@ public class StartActivity extends Activity {
     protected void onActivityResult(int requestCode, int responseCode, Intent data) {
         if (requestCode == 50)
             Log.i(ACTIVITY_NAME, "Returned to StartActivity.onActivityResult");
-        if (responseCode == Activity.RESULT_OK)
+        if (responseCode == Activity.RESULT_OK){
+            String messagePassed = data.getStringExtra("Response");
+            Toast toast = Toast.makeText(StartActivity.this,messagePassed,Toast.LENGTH_LONG);
+            toast.show();
+        }
 
-    ;
 
-        String messagePassed = data.getStringExtra("Response");
-        Toast toast = Toast.makeText(StartActivity.this,messagePassed,Toast.LENGTH_LONG);
-        toast.show();
+
+
 
  }
         @Override

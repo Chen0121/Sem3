@@ -26,10 +26,12 @@ public class ListItemsActivity extends Activity {
         super.onCreate(savedInstanceState);
         Log.i(ACTIVITY_NAME, "In onCreate()");
         setContentView(R.layout.activity_list_items);
+
         btn = findViewById(R.id.ib);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 dispatchTakePictureIntent();
             }
         });
@@ -65,7 +67,7 @@ public class ListItemsActivity extends Activity {
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Intent resultIntent = new Intent();
-                                resultIntent.putExtra("Response", "Here is my response");
+                                resultIntent.putExtra("Response", "ListItemsActivity passed: My information to share");
                                 setResult(Activity.RESULT_OK, resultIntent);
                                 finish();
                             }
