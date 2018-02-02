@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class StartActivity extends Activity {
     protected static final String ACTIVITY_NAME = "StartActivity";
@@ -25,13 +26,19 @@ public class StartActivity extends Activity {
         });
     }
 
-        @Override
-        protected void onActivityResult ( int requestCode, int responseCode, Intent data){
-            if (requestCode == 50)
-                Log.i(ACTIVITY_NAME, "Returned to StartActivity.onActivityResult");
-        }
+    @Override
+    protected void onActivityResult(int requestCode, int responseCode, Intent data) {
+        if (requestCode == 50)
+            Log.i(ACTIVITY_NAME, "Returned to StartActivity.onActivityResult");
+        if (responseCode == Activity.RESULT_OK)
 
+    ;
 
+        String messagePassed = data.getStringExtra("Response");
+        Toast toast = Toast.makeText(StartActivity.this,messagePassed,Toast.LENGTH_LONG);
+        toast.show();
+
+ }
         @Override
         protected void onResume () {
             super.onResume();
