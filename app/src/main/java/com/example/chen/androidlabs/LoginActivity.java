@@ -28,7 +28,7 @@ public class LoginActivity extends Activity {
         String text = sharedPref.getString(getString(R.string.loginname),"email@domain.com");
         email.setText(text);
 
-         button = (Button)findViewById(R.id.button_login);
+        button = (Button)findViewById(R.id.button_login);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,10 +37,8 @@ public class LoginActivity extends Activity {
                 editor.putString(getString(R.string.loginname), email.getText().toString());
                 editor.commit();
 
-                Intent intent = new Intent(LoginActivity.this, StartActivity.class);
-                startActivity(intent);
-
-
+                Intent start = new Intent(LoginActivity.this, StartActivity.class);
+                startActivity(start);
             }
         });
 
