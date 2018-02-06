@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -16,14 +17,25 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         Log.i(ACTIVITY_NAME, "In onCreate()");
         setContentView(R.layout.activity_start);
-        Button btn = findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        Button btn = findViewById(R.id.ButtonText);
+        btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StartActivity.this, ListItemsActivity.class);
                 startActivityForResult(intent, 50);
             }
         });
+
+//        Button btn_chat = findViewById(R.id.start_chat);
+//        btn_chat.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Log.i(ACTIVITY_NAME, "User clicked Start ChatUser clicked Start Chat");
+//                Intent chat = new Intent(StartActivity.this, ChatWindow.class);
+//                startActivity(chat);
+//            }
+//        });
     }
 
     @Override
@@ -35,11 +47,6 @@ public class StartActivity extends Activity {
             Toast toast = Toast.makeText(StartActivity.this,messagePassed,Toast.LENGTH_LONG);
             toast.show();
         }
-
-
-
-
-
  }
         @Override
         protected void onResume () {

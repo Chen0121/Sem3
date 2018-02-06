@@ -2,9 +2,10 @@
 <resources>
     <string name="app_name">安卓实验室</string>
     <string name="hello_message">你好世界！</string>
-    <string name="ButtonText">我是一个按钮</string>
-    <string name="message">登录</string>
-    <string name="passwd">请输入密码</string>
+    <string name="ButtonText">按钮</string>
+    <string name="message">用户名</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
     <string name="loginname">登录名</string>
     <string name="RadioButton">单选按钮</string>
     <string name="CheckBox">复选框</string>
@@ -13,4 +14,7 @@
     <string name="cancel">取消</string>
     <string name="dialog_title">退出</string>
     <string name="dialog_message">确定要结束这个页面吗？</string>
+    <string name="start_chat">开始聊天</string>
+    <string name="send">发送</string>
+
 </resources>

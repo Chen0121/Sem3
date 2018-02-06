@@ -16,35 +16,34 @@ public class LoginActivity extends Activity {
     protected static final String ACTIVITY_NAME = "LoginActivity";
     EditText email;
     Button button;
+    SharedPreferences sharedPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Log.i(ACTIVITY_NAME, "In onCreate()");
 
-        email=(EditText) findViewById(R.id.login_name);
-        final SharedPreferences sharedPref = getSharedPreferences(
+        email = (EditText) findViewById(R.id.login_name);
+        sharedPref = getSharedPreferences(
                 getString(R.string.app_name), Context.MODE_PRIVATE);
-        String text = sharedPref.getString(getString(R.string.loginname),"email@domain.com");
+        String text = sharedPref.getString(getString(R.string.login_name), "email@domain.com");
         email.setText(text);
 
-         button = (Button)findViewById(R.id.button_login);
+        button = (Button) findViewById(R.id.button_login);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(getString(R.string.loginname), email.getText().toString());
+                editor.putString(getString(R.string.login_name), email.getText().toString());
                 editor.commit();
 
-                Intent intent = new Intent(LoginActivity.this, StartActivity.class);
-                startActivity(intent);
-
-
+                Intent start = new Intent(LoginActivity.this, StartActivity.class);
+                startActivity(start);
             }
         });
-
-    }
+}
 
     @Override
     protected void onResume(){
