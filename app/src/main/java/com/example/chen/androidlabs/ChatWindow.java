@@ -47,19 +47,19 @@ public class ChatWindow extends Activity {
             super(ctx, 0);
         }
 
-        //return number of rows in listview
+        //return number of rows in listView, return 1 =1 row
         public int getCount() {
 
             return msgList.size();
         }
 
-        //return items in the list at 1 or 2
+        //show the position
         public String getItem(int position) {
 
             return msgList.get(position);
         }
 
-        //return view 1 or 2
+        //return this whole listView layout, show how this list view looks
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
 
@@ -74,6 +74,8 @@ public class ChatWindow extends Activity {
             return result;
         }
 
-        public long getId(int position){return position;}
+        //database needs, get 1 return 1
+        public long getItemId(int position){
+            return position;}
     }
 }

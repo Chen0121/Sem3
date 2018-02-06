@@ -4,6 +4,7 @@
     <string name="ButtonText">I\’m a button</string>
     <string name="message">login</string>
     <string name="password">password</string>
+    <string name="login">login</string>
     <string name="login_name">login name</string>
     <string name="RadioButton">RadioButton</string>
     <string name="CheckBox">CheckBox</string>
@@ -14,5 +15,4 @@
     <string name="dialog_message">Do you want to leave the page?</string>
     <string name="start_chat">Start Chat</string>
     <string name="send">send</string>
-
 </resources>
