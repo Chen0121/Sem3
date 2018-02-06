@@ -27,15 +27,15 @@ public class StartActivity extends Activity {
             }
         });
 
-//        Button btn_chat = findViewById(R.id.start_chat);
-//        btn_chat.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.i(ACTIVITY_NAME, "User clicked Start ChatUser clicked Start Chat");
-//                Intent chat = new Intent(StartActivity.this, ChatWindow.class);
-//                startActivity(chat);
-//            }
-//        });
+        Button btn_chat = findViewById(R.id.start_chat);
+        btn_chat.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked Start ChatUser clicked Start Chat");
+                Intent chat = new Intent(StartActivity.this, ChatWindow.class);
+                startActivity(chat);
+            }
+        });
     }
 
     @Override

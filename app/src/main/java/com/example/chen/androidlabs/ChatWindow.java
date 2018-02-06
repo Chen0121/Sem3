@@ -35,9 +35,10 @@ public class ChatWindow extends Activity {
                 String content = editText.getText().toString();
                 msgList.add(content);
                 editText.setText("");
-                messageAdapter.notifyDataSetChanged();
+
             }
         });
+        messageAdapter.notifyDataSetChanged();
     }
 
     private class ChatAdapter extends ArrayAdapter<String> {
