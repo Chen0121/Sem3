@@ -15,6 +15,8 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class ListItemsActivity extends Activity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     protected static final String ACTIVITY_NAME = "ListItemsActivity";
@@ -45,10 +47,10 @@ public class ListItemsActivity extends Activity {
                 int duration;
 
                 if (isChecked) {
-                    text = "Switch is On";
+                    text=getString(R.string.switch1);
                     duration = Toast.LENGTH_SHORT;
                 } else {
-                    text = "Switch is Off";
+                    text=getString(R.string.switch2);
                     duration = Toast.LENGTH_LONG;
                 }
                 Toast toast = Toast.makeText(ListItemsActivity.this, text, duration);

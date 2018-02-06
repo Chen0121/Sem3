@@ -15,4 +15,6 @@
     <string name="dialog_message">Do you want to leave the page?</string>
     <string name="start_chat">Start Chat</string>
     <string name="send">send</string>
+    <string name="switch1">Switch is On</string>
+    <string name="switch2">Switch is Off</string>
 </resources>
