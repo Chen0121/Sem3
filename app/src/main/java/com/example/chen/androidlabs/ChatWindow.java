@@ -40,15 +40,6 @@ public class ChatWindow extends Activity {
         messageAdapter.notifyDataSetChanged();
     }
 
-
-
-
-
-
-
-
-
-
     private class ChatAdapter extends ArrayAdapter<String> {
 
         public ChatAdapter(Context ctx) {
