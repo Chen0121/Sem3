@@ -35,7 +35,6 @@ public class ChatWindow extends Activity {
                 String content = editText.getText().toString();
                 msgList.add(content);
                 editText.setText("");
-
             }
         });
         messageAdapter.notifyDataSetChanged();
