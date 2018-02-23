@@ -2,7 +2,10 @@ package com.example.chen.androidlabs;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +17,22 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.example.chen.androidlabs.ChatDatabaseHelper.DATABASE_NAME;
+
 public class ChatWindow extends Activity {
+    protected static final String ACTIVITY_NAME = "ChatWindow";
     ArrayList<String> msgList = new ArrayList<>();
+    ChatDatabaseHelper dhHelper;
+    SQLiteDatabase db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
+
+        dhHelper = new ChatDatabaseHelper(ChatWindow.this);
+        db= dhHelper.getReadableDatabase();
 
         ListView listView = (ListView) findViewById(R.id.list_view);
         final ChatAdapter messageAdapter = new ChatAdapter(this);
@@ -39,6 +51,9 @@ public class ChatWindow extends Activity {
             }
         });
         messageAdapter.notifyDataSetChanged();
+
+
+
     }
 
     private class ChatAdapter extends ArrayAdapter<String> {
