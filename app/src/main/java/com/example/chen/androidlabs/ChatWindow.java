@@ -30,7 +30,7 @@ public class ChatWindow extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
 
-        dhHelper = new ChatDatabaseHelper(ChatWindow.this);
+        dhHelper = new ChatDatabaseHelper(this);
         db = dhHelper.getWritableDatabase();
         String[] mes={ChatDatabaseHelper.KEY_ID,ChatDatabaseHelper.KEY_MESSAGE};
         cursor = db.query(ChatDatabaseHelper.TABLE_NAME,mes,null,null,null,null,null);
