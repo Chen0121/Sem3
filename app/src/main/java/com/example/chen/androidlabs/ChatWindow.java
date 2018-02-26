@@ -1,6 +1,7 @@
 package com.example.chen.androidlabs;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,17 +15,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
-import static com.example.chen.androidlabs.ChatDatabaseHelper.DATABASE_NAME;
 
 public class ChatWindow extends Activity {
     protected static final String ACTIVITY_NAME = "ChatWindow";
-    ArrayList<String> msgList = new ArrayList<>();
+    private ArrayList<String> msgList = new ArrayList<>();
     ChatDatabaseHelper dhHelper;
     SQLiteDatabase db;
-
+    Cursor cursor;
+    ContentValues cValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,22 @@ public class ChatWindow extends Activity {
         setContentView(R.layout.activity_chat_window);
 
         dhHelper = new ChatDatabaseHelper(ChatWindow.this);
-        db= dhHelper.getReadableDatabase();
+        db = dhHelper.getWritableDatabase();
+        String[] mes={ChatDatabaseHelper.KEY_ID,ChatDatabaseHelper.KEY_MESSAGE};
+        cursor = db.query(ChatDatabaseHelper.TABLE_NAME,mes,null,null,null,null,null);
+        cursor.moveToFirst();
+       while(!cursor.isAfterLast()){
+           String message=cursor.getString(cursor.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE));
+           msgList.add(message);
+           Log.i(ACTIVITY_NAME,"SQL MESSAGE:"+cursor.getString(cursor.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE)));
+           cursor.moveToNext();
+           }
+
+        for(int i=0; i<cursor.getColumnCount();i++){
+           cursor.getColumnName(i);
+           Log.i(ACTIVITY_NAME,"Cursor's column count="+cursor.getColumnCount());
+        }
+        db=dhHelper.getWritableDatabase();
 
         ListView listView = (ListView) findViewById(R.id.list_view);
         final ChatAdapter messageAdapter = new ChatAdapter(this);
@@ -46,13 +60,16 @@ public class ChatWindow extends Activity {
             public void onClick(View view) {
                 String content = editText.getText().toString();
                 msgList.add(content);
+
+                cValue = new ContentValues();
+                cValue.put(ChatDatabaseHelper.KEY_MESSAGE,editText.getText().toString());
+                db.insert(ChatDatabaseHelper.TABLE_NAME,null,cValue);
+
                 editText.setText("");
 
             }
         });
         messageAdapter.notifyDataSetChanged();
-
-
 
     }
 
@@ -63,19 +80,19 @@ public class ChatWindow extends Activity {
             super(ctx, 0);
         }
 
-        //return number of rows in listView, return 1 =1 row
+        // return number of rows in listView, return 1 =1 row
         public int getCount() {
 
             return msgList.size();
         }
 
-        //show the position
+        // show the position
         public String getItem(int position) {
 
             return msgList.get(position);
         }
 
-        //return this whole listView layout, show how this list view looks
+        // return this whole listView layout, show how this list view looks
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
 
@@ -85,14 +102,20 @@ public class ChatWindow extends Activity {
             else
                 result = inflater.inflate(R.layout.chat_row_incoming, null);
 
-
             TextView message = (TextView) result.findViewById(R.id.message_text);
             message.setText(getItem(position));
             return result;
         }
 
-        //database needs, get 1 return 1
-        public long getItemId(int position){
-            return position;}
+        // database needs, get 1 return 1
+        public long getItemId(int position) {
+            return position;
+        }
     }
+
+            @Override
+            protected void onDestroy() {
+        super.onDestroy();
+                Log.i(ACTIVITY_NAME, "In onDestroy()");
+        }
 }

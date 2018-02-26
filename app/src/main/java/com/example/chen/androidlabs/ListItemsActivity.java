@@ -15,8 +15,6 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class ListItemsActivity extends Activity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     protected static final String ACTIVITY_NAME = "ListItemsActivity";
