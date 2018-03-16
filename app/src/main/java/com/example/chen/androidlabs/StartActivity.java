@@ -36,6 +36,15 @@ public class StartActivity extends Activity {
                 startActivity(chat);
             }
         });
+
+        Button btn_weather=findViewById(R.id.weather);
+        btn_weather.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent weather=new Intent(StartActivity.this,WeatherForecast.class);
+                startActivity(weather);
+            }}
+        );
     }
 
     @Override
