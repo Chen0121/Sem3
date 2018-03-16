@@ -8,9 +8,9 @@
     tools:context="com.example.chen.androidlabs.LoginActivity">
 
     <TextView
-        android:text="@string/message"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/message" />
 
     <EditText
         android:id="@+id/login_name"

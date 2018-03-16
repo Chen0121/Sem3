@@ -1,14 +1,15 @@
 package com.example.chen.androidlabs;
 
+import android.database.sqlite.SQLiteOpenHelper;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class ChatDatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME= "Messages.db";
     public static final String TABLE_NAME="message";
-    public static final int VERSION_NUM = 3;
+    public static final int VERSION_NUM = 10;
     public static final String KEY_ID="_id";
     public static final String KEY_MESSAGE="_message";
 
