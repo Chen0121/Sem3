@@ -32,21 +32,21 @@ public class WeatherForecast extends Activity {
     private TextView minTemp;
     private TextView maxTemp;
     private ImageView Image;
-    private Toolbar toolBar;
-    String urlString = "http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=d99666875e0e51521f0040a3d97d0f6a&mode=xml&units=metric";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_forecast);
         progressBar = findViewById(R.id.progressBar);
+
         currentTemp=findViewById(R.id.curWeather);
         minTemp=findViewById(R.id.minTemp);
         maxTemp=findViewById(R.id.maxTemp);
         Image=findViewById(R.id.image);
 
         ForecastQuery forecast = new ForecastQuery();
-
+        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=d99666875e0e51521f0040a3d97d0f6a&mode=xml&units=metric";
         forecast.execute(urlString);
     }
 
@@ -61,6 +61,7 @@ public class WeatherForecast extends Activity {
             } else
                 return null;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         } finally {
             if (connection != null) {
@@ -83,10 +84,10 @@ public class WeatherForecast extends Activity {
 
 
         @Override
-        protected String doInBackground(String... args) {
+        protected String doInBackground(String... params) {
             try {
                 // 得到url
-                URL url = new URL(urlString);
+                URL url = new URL(params[0]);
                 // 得到访问对象
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 // 设置从connection读入
@@ -100,10 +101,12 @@ public class WeatherForecast extends Activity {
 
                 InputStream stream = connection.getInputStream();
                 XmlPullParser parser = Xml.newPullParser();
-                parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
                 parser.setInput(stream, null);
 
                 while (parser.next() != XmlPullParser.END_DOCUMENT) {
+                    if (parser.getEventType() != XmlPullParser.START_TAG) {
+                        continue;
+                    }
                     if (parser.getName().equals("temperature")) {
                         curTemp = parser.getAttributeValue(null, "value");
                         publishProgress(25);
@@ -150,10 +153,11 @@ public class WeatherForecast extends Activity {
         }
 
         @Override
-        protected void onPostExecute(String str){
-            minTemp.setText(minTemp.getText());
-            maxTemp.setText(maxTemp.getText());
-            currentTemp.setText(currentTemp.getText());
+        protected void onPostExecute(String result) {
+            String degree = Character.toString((char) 0x00B0);
+            currentTemp.setText(String.format("%s%s%sC", currentTemp.getText(), curTemp, degree));
+            minTemp.setText(String.format("%s%s%sC", minTemp.getText(), min, degree));
+            maxTemp.setText(String.format("%s%s%sC", maxTemp.getText(), max, degree));
             Image.setImageBitmap(icon);
             progressBar.setVisibility(View.INVISIBLE);
         }
