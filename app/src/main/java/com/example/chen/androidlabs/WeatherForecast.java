@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import org.xmlpull.v1.XmlPullParser;
 
@@ -31,19 +30,22 @@ public class WeatherForecast extends Activity {
     private TextView currentTemp;
     private TextView minTemp;
     private TextView maxTemp;
+    private TextView windSpeed;
     private ImageView Image;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_forecast);
         progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
-        currentTemp=findViewById(R.id.curWeather);
+        Image=findViewById(R.id.curWeather);
+        currentTemp=findViewById(R.id.curTemp);
         minTemp=findViewById(R.id.minTemp);
         maxTemp=findViewById(R.id.maxTemp);
-        Image=findViewById(R.id.image);
+        windSpeed=findViewById(R.id.windSpeed);
+
 
         ForecastQuery forecast = new ForecastQuery();
         String urlString = "http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=d99666875e0e51521f0040a3d97d0f6a&mode=xml&units=metric";
@@ -76,6 +78,7 @@ public class WeatherForecast extends Activity {
     }
 
     public class ForecastQuery extends AsyncTask<String, Integer, String> {
+        private String windSpeed;
         private String min;
         private String max;
         private String curTemp;
@@ -116,35 +119,36 @@ public class WeatherForecast extends Activity {
                         publishProgress(75);
                     }
                     if (parser.getName().equals("weather")) {
-                        iconName=parser.getAttributeValue(null,"icon");
+                        iconName = parser.getAttributeValue(null, "icon");
                         String iconFile = iconName + ".png";
                         if (fileExistance(iconFile)) {
                             FileInputStream inputStream = null;
                             try {
-                                inputStream = new FileInputStream(getBaseContext().getFileStreamPath(iconFile));
+                                inputStream = openFileInput(iconFile);
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
                             icon = BitmapFactory.decodeStream(inputStream);
-                            Log.i(ACTIVITY_NAME,"Image exists");
+                            Log.i(ACTIVITY_NAME, "Image exists");
+
+                        } else {
+                            iconName = parser.getAttributeValue(null, "icon");
+                            URL iconUrl = new URL("http://openweathermap.org/img/w/" + iconName + ".png");
+                            icon = getImage(iconUrl);
+                            FileOutputStream outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
+                            icon.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
+                            outputStream.flush();
+                            outputStream.close();
+
+                            Log.i(ACTIVITY_NAME, "Add new image");
                         }
-                    } else {
-                        iconName = parser.getAttributeValue(null, "icon");
-                        URL iconUrl = new URL("http://openweathermap.org/img/w/" + iconName + ".png");
-                        icon = getImage(iconUrl);
-                        FileOutputStream outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
-                        icon.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
-                        outputStream.flush();
-                        outputStream.close();
-                        Log.i(ACTIVITY_NAME,"Add new image");
+                        publishProgress(100);
                     }
-                    publishProgress(100);
+                }  } catch(Exception e){
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+                return null;
             }
-            return null;
-        }
 
         @Override
         protected void onProgressUpdate(Integer ...value){
