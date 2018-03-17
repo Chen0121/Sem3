@@ -120,6 +120,7 @@ public class WeatherForecast extends Activity {
                     }
                     if (parser.getName().equals("speed")){
                         wind=parser.getAttributeValue(null,"value");
+                        publishProgress(125);
                     }
                     if (parser.getName().equals("weather")) {
                         iconName = parser.getAttributeValue(null, "icon");
@@ -127,27 +128,25 @@ public class WeatherForecast extends Activity {
                         if (fileExistance(iconFile)) {
                             FileInputStream inputStream = null;
                             try {
-                                inputStream = openFileInput(iconFile);
+                                inputStream = new FileInputStream(getBaseContext().getFileStreamPath(iconFile));
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
-                            icon = BitmapFactory.decodeStream(inputStream);
+                            icon= BitmapFactory.decodeStream(inputStream);
                             Log.i(ACTIVITY_NAME, "Image exists");
-
                         } else {
-                            iconName = parser.getAttributeValue(null, "icon");
                             URL iconUrl = new URL("http://openweathermap.org/img/w/" + iconName + ".png");
                             icon = getImage(iconUrl);
                             FileOutputStream outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
                             icon.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
                             outputStream.flush();
                             outputStream.close();
-
                             Log.i(ACTIVITY_NAME, "Add new image");
                         }
                         publishProgress(100);
                     }
-                }  } catch(Exception e){
+                }
+            } catch(Exception e){
                 e.printStackTrace();
             }
             return null;
@@ -160,14 +159,13 @@ public class WeatherForecast extends Activity {
         }
 
         @Override
-        protected void onPostExecute(String result) {
-            String degree = Character.toString((char) 0x00B0);
-            currentTemp.setText(String.format("%s%s%sC", currentTemp.getText(), curTemp, degree));
-            minTemp.setText(String.format("%s%s%sC", minTemp.getText(), min, degree));
-            maxTemp.setText(String.format("%s%s%sC", maxTemp.getText(), max, degree));
-            windSpeed.setText(String.format("%s%s%sC", windSpeed.getText(),wind));
-            Image.setImageBitmap(icon);
+        protected void onPostExecute(String args){
             progressBar.setVisibility(View.INVISIBLE);
+            currentTemp.setText(String.format("Current temperature: %sC", curTemp));
+            minTemp.setText(String.format("Min temperature: %sC", min));
+            maxTemp.setText(String.format("Max temperature: %sC", max));
+            windSpeed.setText(String.format("Wind speed: %s", wind));
+            Image.setImageBitmap(icon);
         }
     }
 }
