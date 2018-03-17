@@ -27,16 +27,17 @@ import java.net.URL;
 public class WeatherForecast extends Activity {
     protected static final String ACTIVITY_NAME = "WeatherForecastActivity";
     private ProgressBar progressBar;
+    private ImageView Image;
     private TextView currentTemp;
     private TextView minTemp;
     private TextView maxTemp;
     private TextView windSpeed;
-    private ImageView Image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_forecast);
+
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -45,7 +46,6 @@ public class WeatherForecast extends Activity {
         minTemp=findViewById(R.id.minTemp);
         maxTemp=findViewById(R.id.maxTemp);
         windSpeed=findViewById(R.id.windSpeed);
-
 
         ForecastQuery forecast = new ForecastQuery();
         String urlString = "http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=d99666875e0e51521f0040a3d97d0f6a&mode=xml&units=metric";
@@ -78,7 +78,7 @@ public class WeatherForecast extends Activity {
     }
 
     public class ForecastQuery extends AsyncTask<String, Integer, String> {
-        private String windSpeed;
+        private String wind;
         private String min;
         private String max;
         private String curTemp;
@@ -118,6 +118,9 @@ public class WeatherForecast extends Activity {
                         max = parser.getAttributeValue(null, "max");
                         publishProgress(75);
                     }
+                    if (parser.getName().equals("speed")){
+                        wind=parser.getAttributeValue(null,"value");
+                    }
                     if (parser.getName().equals("weather")) {
                         iconName = parser.getAttributeValue(null, "icon");
                         String iconFile = iconName + ".png";
@@ -145,10 +148,10 @@ public class WeatherForecast extends Activity {
                         publishProgress(100);
                     }
                 }  } catch(Exception e){
-                    e.printStackTrace();
-                }
-                return null;
+                e.printStackTrace();
             }
+            return null;
+        }
 
         @Override
         protected void onProgressUpdate(Integer ...value){
@@ -162,6 +165,7 @@ public class WeatherForecast extends Activity {
             currentTemp.setText(String.format("%s%s%sC", currentTemp.getText(), curTemp, degree));
             minTemp.setText(String.format("%s%s%sC", minTemp.getText(), min, degree));
             maxTemp.setText(String.format("%s%s%sC", maxTemp.getText(), max, degree));
+            windSpeed.setText(String.format("%s%s%sC", windSpeed.getText(),wind));
             Image.setImageBitmap(icon);
             progressBar.setVisibility(View.INVISIBLE);
         }
