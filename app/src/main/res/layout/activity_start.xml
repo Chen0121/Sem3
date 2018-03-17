@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,8 +7,12 @@
     tools:context="com.example.chen.androidlabs.StartActivity">
 
     <TextView
+        android:id="@+id/hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:text="@string/hello_message"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,6 +24,9 @@
         android:id="@+id/ButtonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/start_chat"
+        android:layout_below="@+id/hello"
+        android:layout_marginTop="41dp"
         android:text="@string/ButtonText"
         android:visibility="visible"
         tools:layout_editor_absoluteX="135dp"
@@ -29,6 +36,10 @@
         android:id="@+id/start_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ButtonText"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="85dp"
         android:text="@string/start_chat"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="77dp" />
@@ -37,7 +48,9 @@
         android:id="@+id/weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Weather"
-        />
+        android:layout_alignStart="@+id/start_chat"
+        android:layout_below="@+id/start_chat"
+        android:layout_marginTop="81dp"
+        android:text="Weather" />
 
-</GridLayout>
+</RelativeLayout>
