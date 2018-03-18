@@ -51,6 +51,6 @@
         android:layout_alignStart="@+id/start_chat"
         android:layout_below="@+id/start_chat"
         android:layout_marginTop="81dp"
-        android:text="Weather" />
+        android:text="weather report" />
 
 </RelativeLayout>
