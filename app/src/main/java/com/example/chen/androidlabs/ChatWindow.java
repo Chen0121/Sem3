@@ -25,10 +25,19 @@ public class ChatWindow extends Activity {
     Cursor cursor;
     ContentValues cValue;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
+
+
+        if(findViewById(R.id.frame)==null){
+            //was not load , using tablet layout,screen is at least 600 pixels
+
+
+        }
+
 
         dhHelper = new ChatDatabaseHelper(this);
         db = dhHelper.getWritableDatabase();
