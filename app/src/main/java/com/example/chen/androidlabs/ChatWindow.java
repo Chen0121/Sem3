@@ -1,8 +1,10 @@
 package com.example.chen.androidlabs;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,6 +62,29 @@ public class ChatWindow extends Activity {
         ListView listView = (ListView) findViewById(R.id.list_view);
         final ChatAdapter messageAdapter = new ChatAdapter(this);
         listView.setAdapter(messageAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String message=adapterView.getItemAtPosition(position).toString();
+                Long messageId=adapterView.getItemIdAtPosition(position);
+
+                if(tablet){
+                    Bundle bundle=new Bundle();
+                    bundle.putString("Message",message);
+                    bundle.putLong("Message ID",messageId);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.add(R.id.frame, fragment);
+                    ft.commit();
+                }else{
+                    Intent intentPhone=new Intent(ChatWindow.this,MessageDetails.class);
+                    intentPhone.putExtra("Message",message);
+                    intentPhone.putExtra("Message ID",messageId);
+                    startActivityForResult(intentPhone,60);
+                }
+            }
+        });
+
 
         Button button = (Button) findViewById(R.id.send_btn);
         final EditText editText = (EditText) findViewById(R.id.chat_text);
@@ -117,7 +143,8 @@ public class ChatWindow extends Activity {
 
         // database needs, get 1 return 1
         public long getItemId(int position) {
-            return position;
+            cursor.moveToPosition(position);
+            return cursor.getInt(cursor.getColumnIndex(ChatDatabaseHelper.KEY_ID));
         }
     }
 
