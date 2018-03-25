@@ -2,10 +2,12 @@ package com.example.chen.androidlabs;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 public class MessageDetails extends Activity {
 
@@ -24,5 +26,21 @@ public class MessageDetails extends Activity {
         }
     }
 
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        Button btn_delete = findViewById(R.id.btn_delete);
+        btn_delete.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick (View view){
+            if(){
+
+            }else{
+            Intent result=new Intent();
+            getActivity().setResult( int resultCode, Intent data)
+    }
+        }
+    });
+
+}
 }
