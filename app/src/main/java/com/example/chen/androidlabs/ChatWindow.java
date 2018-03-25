@@ -23,10 +23,10 @@ import java.util.ArrayList;
 public class ChatWindow extends Activity {
     protected static final String ACTIVITY_NAME = "ChatWindow";
     private ArrayList<String> msgList = new ArrayList<>();
-    ChatDatabaseHelper dhHelper;
-    SQLiteDatabase db;
-    Cursor cursor;
-    ContentValues cValue;
+    private ChatDatabaseHelper dhHelper;
+    private SQLiteDatabase db;
+    private Cursor cursor;
+    private ContentValues cValue;
     private boolean frameExists;
 
     @Override
@@ -46,6 +46,7 @@ public class ChatWindow extends Activity {
         String[] mes={ChatDatabaseHelper.KEY_ID,ChatDatabaseHelper.KEY_MESSAGE};
         cursor = db.query(ChatDatabaseHelper.TABLE_NAME,mes,null,null,null,null,null);
         cursor.moveToFirst();
+
        while(!cursor.isAfterLast()){
            String message=cursor.getString(cursor.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE));
            msgList.add(message);
@@ -66,10 +67,12 @@ public class ChatWindow extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
                 String message=adapterView.getItemAtPosition(position).toString();
                 Long messageId=adapterView.getItemIdAtPosition(position);
 
-                if(tablet){
+                if((findViewById(R.id.frame)!=null)){
+
                     Bundle bundle=new Bundle();
                     bundle.putString("Message",message);
                     bundle.putLong("Message ID",messageId);
