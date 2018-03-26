@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/message_text"
+        android:id="@+id/message_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -14,9 +14,9 @@
 
 
     <ImageView
-        android:id="@+id/message_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/row_odd" />
+        android:src="@drawable/row_odd"
+        android:layout_gravity="right"/>
 
 </LinearLayout>
