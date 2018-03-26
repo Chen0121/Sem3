@@ -9,11 +9,11 @@ import android.util.Log;
 public class ChatDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "Messages.db";
-    public static final String TABLE_NAME = "table_msg";
-    public static final String KEY_ID = "id";
-    public static final String KEY_MESSAGE = "message";
+    static final String TABLE_NAME = "table_msg";
+    static final String KEY_ID = "id";
+    static final String KEY_MESSAGE = "message";
 
-    public ChatDatabaseHelper(Context ctx) {
+    ChatDatabaseHelper(Context ctx) {
         super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

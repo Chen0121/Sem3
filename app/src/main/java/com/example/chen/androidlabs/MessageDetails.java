@@ -13,11 +13,10 @@ public class MessageDetails extends Activity {
 
         Bundle bundle = getIntent().getBundleExtra("ChatItem");
 
-        //start a FragmentTransaction to add a fragment to the FrameLayout
         MessageFragment myFragment = new MessageFragment();
         myFragment.setArguments(bundle);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.msgDetail_framelayout, myFragment).commit();
+        transaction.replace(R.id.detail_layout, myFragment).commit();
 
 
     }

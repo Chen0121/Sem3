@@ -18,5 +18,7 @@
     <string name="switch1">Switch is On</string>
     <string name="switch2">Switch is Off</string>
     <string name="infopass">ListItemsActivity passed: My information to share</string>
+    <string name="id_equal">\      ID=</string>
+    <string name="message_here">\      MessageHere</string>
 
 </resources>
