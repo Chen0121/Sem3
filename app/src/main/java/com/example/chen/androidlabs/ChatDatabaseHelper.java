@@ -1,20 +1,20 @@
 package com.example.chen.androidlabs;
 
 import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteOpenHelper;
-
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class ChatDatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME= "Messages.db";
-    public static final int VERSION_NUM = 1;
 
-    public static final String TABLE_NAME="message";
-    public static final String KEY_ID="_id";
-    public static final String KEY_MESSAGE="_message";
+    private static String DATABASE_NAME = "Messages.db";
+    private static int VERSION_NUM = 2;
+
+    public static final String TABLE_NAME = "entry";
+    public static final String KEY_ID = "id";
+    public static final String KEY_MESSAGE = "message";
     private String TAG_SQL = ChatDatabaseHelper.class.getSimpleName();
 
     private SQLiteDatabase database;
@@ -55,12 +55,10 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onOpen(SQLiteDatabase db) {
-
         Log.i("Database ", "onOpen was called");
     }
 
     public void openDatabase() {
-
         database = this.getWritableDatabase();
     }
 
