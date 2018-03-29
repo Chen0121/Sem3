@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Multiple_Choice_Quiz_Creater" />
+        <activity android:name=".Quiz_Creater" />
         <activity android:name=".Patient_Intake_form" />
         <activity android:name=".Movie_Information" />
         <activity android:name=".OCTranspo_Bus_Route_App"></activity>
