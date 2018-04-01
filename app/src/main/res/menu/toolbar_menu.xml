@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_one"
+    <item android:id="@+id/option_one"
         android:title="Choice 1"
         android:icon="@drawable/bear"
         android:orderInCategory="101"
         app:showAsAction="always" />
 
-    <item android:id="@+id/action_two"
+    <item android:id="@+id/option_two"
         android:title="Choice 2"
         android:icon="@drawable/panda"
         android:orderInCategory="102"
         app:showAsAction="always" />
 
-    <item android:id="@+id/action_three"
+    <item android:id="@+id/option_three"
         android:title="Choice 3"
         android:icon="@drawable/beaver"
         android:orderInCategory="103"
