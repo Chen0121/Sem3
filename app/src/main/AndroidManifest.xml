@@ -30,9 +30,6 @@
         <activity android:name=".MessageDetails" />
         <activity android:name=".MessageFragment" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" />
-        <activity
             android:name=".TestToolbar"
             android:label="@string/title_activity_test_toolbar"></activity>
     </application>
