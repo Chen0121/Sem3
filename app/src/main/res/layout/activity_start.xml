@@ -22,11 +22,11 @@
 
     <Button
         android:id="@+id/ButtonText"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/start_chat"
         android:layout_below="@+id/hello"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="52dp"
         android:text="@string/ButtonText"
         android:visibility="visible"
         tools:layout_editor_absoluteX="135dp"
@@ -34,15 +34,12 @@
 
     <Button
         android:id="@+id/start_chat"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/ButtonText"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="85dp"
-        android:text="@string/start_chat"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="77dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:text="@string/start_chat" />
 
     <Button
         android:id="@+id/weather"
@@ -50,7 +47,17 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/start_chat"
         android:layout_below="@+id/start_chat"
-        android:layout_marginTop="81dp"
-        android:text="weather forecast" />
+        android:layout_marginTop="20dp"
+        android:text="@string/forecast" />
+
+    <Button
+        android:id="@+id/toolbar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/weather"
+        android:layout_alignStart="@+id/weather"
+        android:layout_below="@+id/weather"
+        android:layout_marginTop="19dp"
+        android:text="@string/test_toolbar" />
 
 </RelativeLayout>

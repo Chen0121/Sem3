@@ -34,8 +34,8 @@ public class TestToolbar extends Activity {
             case R.id.option_three:
                 Log.d("Toolbar","Option 3 selected");
                 break;
-
             default:
+                Log.d("default","you should choose one, two, or three");
                 break;
         }
     }
