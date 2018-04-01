@@ -20,5 +20,7 @@
     <string name="infopass">ListItemsActivity passed: My information to share</string>
     <string name="id_equal">\      ID=</string>
     <string name="message_here">\      MessageHere</string>
+    <string name="title_activity_test_toolbar">TestToolbar</string>
+    <string name="title_activity_main">TestToolbar</string>
 
 </resources>
