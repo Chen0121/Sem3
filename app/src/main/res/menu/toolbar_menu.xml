@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item android:id="@+id/option_one"
         android:title="Choice 1"
         android:icon="@drawable/bear"
@@ -19,5 +18,4 @@
         android:icon="@drawable/beaver"
         android:orderInCategory="103"
         app:showAsAction="always" />
-
 </menu>
