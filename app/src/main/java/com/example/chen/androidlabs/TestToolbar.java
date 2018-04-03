@@ -50,6 +50,7 @@ public class TestToolbar extends AppCompatActivity {
                 Snackbar.make(findViewById(R.id.option_one), SnackbarMsg, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 break;
+
             case R.id.option_two:
                 Log.d("Toolbar","option 2 selected");
 
@@ -57,8 +58,6 @@ public class TestToolbar extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 // 2. Chain together various setter methods to set the dialog characteristics
                 builder.setTitle(R.string.title);
-
-
                 // Add the buttons
                 builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -74,8 +73,8 @@ public class TestToolbar extends AppCompatActivity {
                         // Create the AlertDialog
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
                 break;
+
             case R.id.option_three:
                 Log.d("Toolbar","option 3 selected");
 
@@ -96,6 +95,7 @@ public class TestToolbar extends AppCompatActivity {
                 AlertDialog dialog1 = builder1.create();
                 dialog1.show();
                 break;
+                
             case R.id.about:
                 CharSequence text = "Version 1.0 by Chen Huang";
                 int duration = Toast.LENGTH_SHORT;
