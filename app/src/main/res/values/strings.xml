@@ -27,4 +27,8 @@
     <string name="title_activity_test_an">TestAnActivity</string>
     <string name="title_activity_test_eric">testEric</string>
 
+    <string name="OK">OK</string>
+    <string name="CANCEL">Cancel</string>
+    <string name="title">Do you want to go back?</string>
+
 </resources>

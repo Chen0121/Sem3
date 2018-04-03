@@ -18,4 +18,10 @@
         android:icon="@drawable/beaver"
         android:orderInCategory="103"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/about"
+        android:title="about icon"
+        android:orderInCategory="104"
+        app:showAsAction="never"/>
 </menu>
