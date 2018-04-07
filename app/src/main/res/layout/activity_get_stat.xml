@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chen.final_project.Movie_Information">
+    tools:context="com.example.chen.final_project.GetStat">
 
 </android.support.constraint.ConstraintLayout>

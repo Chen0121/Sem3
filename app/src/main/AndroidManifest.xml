@@ -17,9 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Quiz_Creater" />
-        <activity android:name=".Patient_Intake_form" />
-        <activity android:name=".Movie_Information" />
-        <activity android:name=".OCTranspo_Bus_Route_App"></activity>
+        <activity android:name=".ImportQuiz" />
+        <activity android:name=".test" />
+        <activity android:name=".CreateQuiz" />
+        <activity android:name=".GetStat"></activity>
     </application>
 
 </manifest>
