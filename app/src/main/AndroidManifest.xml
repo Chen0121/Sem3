@@ -20,7 +20,10 @@
         <activity android:name=".ImportQuiz" />
         <activity android:name=".test" />
         <activity android:name=".CreateQuiz" />
-        <activity android:name=".GetStat"></activity>
+        <activity android:name=".GetStat" />
+        <activity android:name=".QuizDetails" />
+        <activity android:name=".QuizFragment" />
+        <activity android:name=".QuizDatabaseHelper"></activity>
     </application>
 
 </manifest>
