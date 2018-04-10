@@ -11,10 +11,10 @@ public class QuizDetails extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_details);
 
-            Bundle bundle = getIntent().getBundleExtra("ChatItem");
-            QuizFragment myFragment = new QuizFragment();
-            myFragment.setArguments(bundle);
+            Bundle bundle = getIntent().getBundleExtra("QuizItem");
+            QuizFragment Fragment = new QuizFragment();
+            Fragment.setArguments(bundle);
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.quiz_details, myFragment).commit();
+            transaction.replace(R.id.quiz_details, Fragment).commit();
     }
 }

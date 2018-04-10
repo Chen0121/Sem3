@@ -23,9 +23,8 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper {
     static final String KEY_D = "AnswerD";
 
 
-    private QuizDatabaseHelper(Context ctx) {
+    QuizDatabaseHelper(Context ctx) {
         super(ctx, db_name, null, db_version);
-
     }
 
     @Override

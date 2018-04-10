@@ -44,7 +44,7 @@ public class Quiz_Creater extends Activity {
         btn_quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //back to main menu
+                Intent back=new Intent(Quiz_Creater.this,MainActivity.class);
             }
         });
 
