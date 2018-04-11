@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 public class QuizDatabaseHelper extends SQLiteOpenHelper {
+    //继承抽象类创建子类实现 OnCreate和onUpgrade
     private static final int db_version = 1;
     private static final String db_name = "Quiz.db";
     static final String table_multiple = "table_multipleChoice";
@@ -27,6 +28,7 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper {
         super(ctx, db_name, null, db_version);
     }
 
+    //如果数据库不存在就创建数据库和表
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
@@ -45,8 +47,11 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper {
         } catch (SQLException e) {
             Log.e("QuizDatabaseHelper", e.getMessage());
         }
+
+        
     }
 
+    //如果数据库存在，完成升级
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVer, int newVer) {
         db.execSQL("DROP TABLE IF EXISTS " + table_multiple + ";");
