@@ -9,5 +9,7 @@ public class CreateQuiz extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_quiz);
+
+        Button
     }
 }

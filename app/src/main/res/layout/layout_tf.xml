@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textShortMessage" />
+
+    <RadioButton
+        android:id="@+id/radioButton_true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="True" />
+
+    <RadioButton
+        android:id="@+id/radioButton_false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="False" />
+
+    <Button
+        android:id="@+id/tf_add"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="ADD" />
+
+    <Button
+        android:id="@+id/tf_cancel"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="CANCEL" />
+</LinearLayout>
