@@ -7,23 +7,22 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Bundle;
 import android.util.Log;
 
 public class QuizDatabaseHelper extends SQLiteOpenHelper {
     //继承抽象类创建子类实现 OnCreate和onUpgrade
     private static final int db_version = 1;
     private static final String db_name = "Quiz.db";
-    static final String table_multiple = "table_multipleChoice";
-    static final String table_numeric = "table_numericQuestion";
-    static final String table_tf = "table_tfQuestion";
-    static final String KEY_ID = "id";
-    static final String KEY_Question = "question";
-    static final String KEY_Correct = "correctAnswer";
-    static final String KEY_A = "AnswerA";
-    static final String KEY_B = "AnswerB";
-    static final String KEY_C = "AnswerC";
-    static final String KEY_D = "AnswerD";
+    public static final String table_multiple = "table_multipleChoice";
+    public static final String table_numeric = "table_numericQuestion";
+    public static final String table_tf = "table_tfQuestion";
+    public static final String KEY_ID = "id";
+    public static final String KEY_Question = "question";
+    public static final String KEY_Correct = "correctAnswer";
+    public static final String KEY_A = "AnswerA";
+    public static final String KEY_B = "AnswerB";
+    public static final String KEY_C = "AnswerC";
+    public static final String KEY_D = "AnswerD";
 
 
     QuizDatabaseHelper(Context ctx) {
