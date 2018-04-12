@@ -1,4 +1,4 @@
-package com.example.chen.final_project;
+package com.example.chen;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.example.chen.final_project.R;
 
 
 public class CreateQuiz extends Activity {

@@ -1,4 +1,4 @@
-package com.example.chen.final_project;
+package com.example.chen;
 
 import android.app.Activity;
 import android.content.ContentValues;

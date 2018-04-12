@@ -1,8 +1,10 @@
-package com.example.chen.final_project;
+package com.example.chen;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+
+import com.example.chen.final_project.R;
 
 public class QuizDetails extends Activity {
 

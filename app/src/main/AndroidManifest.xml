@@ -9,20 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.chen.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Quiz_Creater" />
-        <activity android:name=".ImportQuiz" />
-        <activity android:name=".CreateQuiz" />
-        <activity android:name=".GetStat" />
-        <activity android:name=".QuizDetails" />
-        <activity android:name=".QuizFragment" />
-        <activity android:name=".QuizDatabaseHelper"></activity>
+        <activity android:name="com.example.chen.Quiz_Creater" />
+        <activity android:name="com.example.chen.ImportQuiz" />
+        <activity android:name="com.example.chen.CreateQuiz" />
+        <activity android:name="com.example.chen.GetStat" />
+        <activity android:name="com.example.chen.QuizDetails" />
+        <activity android:name="com.example.chen.QuizFragment" />
+        <activity android:name="com.example.chen.QuizDatabaseHelper" />
+        <activity android:name="com.example.chen.abstractQuestion" />
+        <activity android:name="com.example.chen.multipleQuestion" />
+        <activity android:name="com.example.chen.multipleDetails" />
+        <activity android:name="com.example.chen.multipleFragment"></activity>
     </application>
 
 </manifest>

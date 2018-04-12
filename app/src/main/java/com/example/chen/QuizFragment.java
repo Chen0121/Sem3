@@ -1,4 +1,4 @@
-package com.example.chen.final_project;
+package com.example.chen;
 
 import android.app.Fragment;
 import android.os.Bundle;

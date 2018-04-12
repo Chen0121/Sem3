@@ -11,7 +11,7 @@
         android:layout_marginBottom="20dp" />
 
     <EditText
-        android:id="@+id/question_fragment"
+        android:id="@+id/multiple_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/question"
