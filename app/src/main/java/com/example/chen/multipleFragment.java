@@ -1,16 +1,18 @@
 package com.example.chen;
 
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 
+import com.example.chen.androidlabs.CreateQuiz;
 import com.example.chen.final_project.R;
-
 
 public class multipleFragment extends Fragment {
     private boolean isTablet;
@@ -25,6 +27,7 @@ public class multipleFragment extends Fragment {
     private EditText multipleQuestion;
     private Button btn_update;
     private Button btn_delete;
+    private Bundle bundle;
 
 
     @Override
@@ -44,7 +47,130 @@ public class multipleFragment extends Fragment {
         checkB=view.findViewById(R.id.B_fragment);
         checkC=view.findViewById(R.id.C_fragment);
         checkD=view.findViewById(R.id.D_fragment);
-        
+        btn_delete=view.findViewById(R.id.delete);
+        btn_update=view.findViewById(R.id.update);
+        bundle=getArguments();
 
+        final String question=bundle.getString("Question");
+        String answerA=bundle.getString("answerA");
+        String answerB=bundle.getString("answerB");
+        String answerC=bundle.getString("answerC");
+        String answerD=bundle.getString("answerD");
+        String correct=bundle.getString("correct");
+        final  Long id=bundle.getLong("ID");
+//        final long id_inChat= bundle.getLong("IDInChat");
+
+        multipleQuestion.setText(question);
+        textA.setText(answerA);
+        textB.setText(answerB);
+        textC.setText(answerC);
+        textD.setText(answerD);
+
+        if(correct.equals("A")){
+            checkA.setChecked(true);
+        }else if(correct.equals("B")){
+            checkB.setChecked(true);
+        }else if(correct.equals("C")){
+            checkC.setChecked(true);
+        }else if(correct.equals("D")){
+            checkD.setChecked(true);
+        }else{
+             throw new IllegalArgumentException("checkbox did not match");
+        }
+
+       checkA.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               checkB.setChecked(false);
+               checkC.setChecked(false);
+               checkD.setChecked(false);
+           }
+       });
+        checkB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkA.setChecked(false);
+                checkC.setChecked(false);
+                checkD.setChecked(false);
+            }
+        });
+        checkC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkA.setChecked(false);
+                checkB.setChecked(false);
+                checkD.setChecked(false);
+            }
+        });
+        checkD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkA.setChecked(false);
+                checkB.setChecked(false);
+                checkC.setChecked(false);
+            }
+        });
+
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isTablet){
+                    CreateQuiz createQuiz=(CreateQuiz)getActivity();
+                    createQuiz.deleteForTablet();
+                }else{
+                    Intent resultIntent=new Intent();
+                    resultIntent.putExtra("ID",id);
+                    resultIntent.putExtra("Question","multiple");
+                    getActivity().setResult(Activity.RESULT_OK, resultIntent);
+                    getActivity().finish();
+                }
+            }
+        });
+
+        btn_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newQuestion=multipleQuestion.getText().toString();
+                String newA=textA.getText().toString();
+                String newB=textB.getText().toString();
+                String newC=textC.getText().toString();
+                String newD=textD.getText().toString();
+                String newCorrect = null;
+                if(checkA.isChecked()){
+                    newCorrect="A";
+                }else if(checkB.isChecked()){
+                    newCorrect="B";
+                }else if(checkC.isChecked()){
+                    newCorrect="C";
+                }else if(checkD.isChecked()){
+                    newCorrect="D";
+                }
+
+                if(isTablet){
+                    CreateQuiz createQuiz=(CreateQuiz)getActivity();
+                    createQuiz.deleteForTablet();
+                    createQuiz.updateForTablet();
+                }else {
+                    Intent resultIntent=new Intent();
+                    resultIntent.putExtra("ID",id);
+                    resultIntent.putExtra("Question","multiple");
+                    resultIntent.putExtra("NewQuestion",newQuestion);
+                    resultIntent.putExtra("AnswerA",newA);
+                    resultIntent.putExtra("AnswerB",newB);
+                    resultIntent.putExtra("AnswerC",newC);
+                    resultIntent.putExtra("AnswerD",newD);
+                    resultIntent.putExtra("NewCorrect",newCorrect);
+                    getActivity().setResult(Activity.RESULT_OK, resultIntent);
+                    getActivity().finish();
+                }
+            }
+        });
+            return view;
     }
+
+    public void setIsTablet(boolean isTablet){
+
+        this.isTablet=isTablet;
+    }
+
 }

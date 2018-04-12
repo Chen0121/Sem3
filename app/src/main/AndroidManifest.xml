@@ -18,7 +18,6 @@
         </activity>
         <activity android:name="com.example.chen.Quiz_Creater" />
         <activity android:name="com.example.chen.ImportQuiz" />
-        <activity android:name="com.example.chen.CreateQuiz" />
         <activity android:name="com.example.chen.GetStat" />
         <activity android:name="com.example.chen.QuizDetails" />
         <activity android:name="com.example.chen.QuizFragment" />
@@ -26,7 +25,8 @@
         <activity android:name="com.example.chen.abstractQuestion" />
         <activity android:name="com.example.chen.multipleQuestion" />
         <activity android:name="com.example.chen.multipleDetails" />
-        <activity android:name="com.example.chen.multipleFragment"></activity>
+        <activity android:name="com.example.chen.multipleFragment" />
+        <activity android:name="com.example.chen.androidlabs.CreateQuiz"></activity>
     </application>
 
 </manifest>
