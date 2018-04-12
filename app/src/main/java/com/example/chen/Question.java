@@ -1,8 +1,8 @@
 package com.example.chen;
 
-public abstract class abstractQuestion {
+public abstract class Question {
     private String question;
-    private int questionType;
+    private int type;
 
     private String getQuestion() {
         return question;
@@ -12,8 +12,8 @@ public abstract class abstractQuestion {
         this.question = question;
     }
 
-    public int questionType() {
-        return questionType;
+    public int type() {
+        return type;
     }
 }
 

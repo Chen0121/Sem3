@@ -1,20 +1,19 @@
 package com.example.chen;
 
-public class multipleQuestion extends abstractQuestion{
+public class multipleQuestion extends Question {
     private String answerA;
     private String answerB;
     private String answerC;
     private String answerD;
     private String correct;
 
-    public multipleQuestion(String answerA,String answerB,String answerC,String answerD,String question, String correct, int questionType){
+    public multipleQuestion(String answerA,String answerB,String answerC,String answerD,String question, String correct){
         setAnswerA(answerA);
         setAnswerB(answerB);
         setAnswerC(answerC);
         setAnswerD(answerD);
         setQuestion(question);
         setCorrect(correct);
-        questionType=1;
     }
 
     public String getAnswerA(){

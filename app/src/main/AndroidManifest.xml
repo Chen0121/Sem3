@@ -22,11 +22,17 @@
         <activity android:name="com.example.chen.QuizDetails" />
         <activity android:name="com.example.chen.QuizFragment" />
         <activity android:name="com.example.chen.QuizDatabaseHelper" />
-        <activity android:name="com.example.chen.abstractQuestion" />
+        <activity android:name="com.example.chen.Question" />
         <activity android:name="com.example.chen.multipleQuestion" />
         <activity android:name="com.example.chen.multipleDetails" />
         <activity android:name="com.example.chen.multipleFragment" />
-        <activity android:name="com.example.chen.androidlabs.CreateQuiz"></activity>
+        <activity android:name="com.example.chen.CreateQuiz" />
+        <activity android:name="com.example.chen.numQuestion" />
+        <activity android:name="com.example.chen.numFragment" />
+        <activity android:name="com.example.chen.numDetails" />
+        <activity android:name="com.example.chen.tfQuestion" />
+        <activity android:name="com.example.chen.tfDetails" />
+        <activity android:name="com.example.chen.tfFragment"></activity>
     </application>
 
 </manifest>
