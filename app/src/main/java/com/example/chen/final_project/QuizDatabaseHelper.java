@@ -1,7 +1,9 @@
 package com.example.chen.final_project;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -47,8 +49,22 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper {
         } catch (SQLException e) {
             Log.e("QuizDatabaseHelper", e.getMessage());
         }
+          insertRecords(db);
 
-        
+    }
+
+    private void insertRecords(SQLiteDatabase db){
+         ContentValues values = new ContentValues();
+
+         values.put("id",001);
+         values.put("question","question");
+         values.put("correct","correct");
+         values.put("A","a");
+         values.put("B","b");
+         values.put("C","c");
+         values.put("D","d");
+         db.insert(table_multiple,null,values);
+
     }
 
     //如果数据库存在，完成升级
@@ -70,5 +86,27 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper {
         Log.i("QuizDatabaseHelper", "onDowngrade, oldVer=" + oldVer + " newVer= " + newVer);
     }
 
+
+    public Cursor query(String[] columns, String selection, String[] selectionArgs) {
+        // 获取一个只读数据库
+        SQLiteDatabase db = getReadableDatabase();
+        // 执行查询方法，返回游标
+        return db.query(table_multiple, columns, selection, selectionArgs, null, null, null);
+    }
+
+    public int delete(String whereClause, String[] whereArgs) {
+        // 获取一个可写数据库
+        SQLiteDatabase db = getWritableDatabase();
+        // 执行删除方法，返回删除记录数
+        return db.delete(table_multiple, whereClause, whereArgs);
+    }
+
+    public int update(ContentValues values, String whereClause, String[] whereArgs) {
+        return 0;
+    }
+
+    public int insert(ContentValues values) {
+        return 0;
+    }
 }
 

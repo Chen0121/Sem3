@@ -1,25 +1,44 @@
 package com.example.chen.final_project;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
 
 public class CreateQuiz extends Activity {
-    Button btn_numeric;
+    private ListView list_multiple;
+    private ListView list_tf;
+    private ListView list_numeric;
+    private Button btn_multiple;
+    private Button btn_tf;
+    private Button btn_numeric;
+    private Cursor cursor;
+    private SQLiteDatabase db;
+    private QuizDatabaseHelper dbHelper;
+    QuizAdapter mAdapter;
+    QuizAdapter tfAdapter;
+    QuizAdapter nAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_quiz);
+        dbHelper = new QuizDatabaseHelper(this);
 
-        btn_numeric=(Button)findViewById(R.id.button_numeric);
-        btn_numeric.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent add_numeric=new Intent(CreateQuiz.this,QuizFragment.class);
-                startActivity(add_numeric);
-            }
-        });
+        list_multiple = findViewById(R.id.list_1);
+        list_tf = findViewById(R.id.list_2);
+        list_numeric = findViewById(R.id.list_3);
+
+    }
+
+    private class MultipleAdapter extends ArrayAdapter<String> {
+        public MultipleAdapter(Context ctx) {
+            super(ctx, 0);
+        }
     }
 }
